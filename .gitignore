@@ -1,3 +1,7 @@
+# Desktop build
+desktop/output/
+desktop/bind_*
+
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
