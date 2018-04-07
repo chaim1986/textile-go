@@ -19,7 +19,9 @@ func handleMessages(_ *astilectron.Window, m bootstrap.MessageIn) (payload inter
 	case "peer.qr":
 
 		var png []byte
-		png, err := qrcode.Encode("https://www.textile.photos/?error=no-qr-code", qrcode.Medium, 256)
+		// I've registered this URL so that apple will do an App Link from any url like it directly into our
+		// app. Just need to do a PR in the app to receive it
+		png, err := qrcode.Encode("https://www.textile.io/threads/pair=testing", qrcode.Medium, 256)
 		if err != nil {
 			astilog.Errorf("qr generation failed: %s", err)
 			return err.Error(), err
