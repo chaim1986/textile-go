@@ -30,7 +30,7 @@ func handleMessages(iw *astilectron.Window, m bootstrap.MessageIn) (payload inte
 
 		// create a qr code
 		url := fmt.Sprintf("https://www.textile.io/clients?code=%s&key=%s", code, pk)
-		png, err := qrcode.Encode(url, qrcode.Medium, 256)
+		png, err := qrcode.Encode(url, qrcode.Medium, 250)
 		if err != nil {
 			astilog.Errorf("qr generation failed: %s", err)
 			return nil, err

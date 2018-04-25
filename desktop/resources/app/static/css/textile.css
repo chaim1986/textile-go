@@ -81,11 +81,10 @@ h2 span {
     font-size: 1.5em;
 }
 
-.container {
-    margin-top: 50px;
-    margin-left: 10%;
-}
-
+/*.container {*/
+    /*margin-top: 50px;*/
+    /*margin-left: 10%;*/
+/*}*/
 
 .onboarding {
     /*margin-top: 50px;*/
@@ -100,6 +99,7 @@ h2 span {
 
 .onboarding .screen .container {
     vertical-align: middle;
+    margin-left: 120px;
 }
 
 .onboarding .screen .container .qr-code {

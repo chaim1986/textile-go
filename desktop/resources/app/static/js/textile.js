@@ -45,12 +45,12 @@ let textile = {
     astilectron.onMessage(function(message) {
       switch (message.name) {
 
-        case "login.cookie":
+          case "login.cookie":
           // Setup cookie session for this client
           let expiration = new Date()
-          let hour = expiration.getHours()
-          hour = hour + 6
-          expiration.setHours(hour)
+          // Note: we don't really care about edge cases here, just add one month
+          let month = expiration.getMonth()
+          expiration.setMonth(month + 1)
           /** @namespace ses.cookies **/
           session.cookies.set({
               url: gateway,
