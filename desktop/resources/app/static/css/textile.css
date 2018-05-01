@@ -12,9 +12,13 @@
     color: #2935FF;
 }
 
-.row button {
+button {
     color: #2935FF;
     border: 1px solid #2935FF;
+    position: fixed;
+    left: 100%;
+    top: 50%;
+    margin-left: -150px;
 }
 
 #left {
@@ -39,6 +43,7 @@ html, body {
     width: 100%;
     display: grid;
     overflow-x: hidden;
+    overflow-y: scroll;
     background: white url("../img/back-01.png") repeat;
 }
 
@@ -83,7 +88,8 @@ h2 span {
 
 .container {
     margin-top: 50px;
-    margin-left: 10%;
+    margin-left: 120px;
+    width: 75%;
 }
 
 

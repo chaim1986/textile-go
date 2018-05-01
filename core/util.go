@@ -18,13 +18,14 @@ import (
 	"gx/ipfs/QmatUACvrFK3xYg1nd2iLAKfz7Yy5YB56tnzBYHpqiUuhn/go-ipfs/core/corehttp"
 	"gx/ipfs/QmatUACvrFK3xYg1nd2iLAKfz7Yy5YB56tnzBYHpqiUuhn/go-ipfs/core/corerepo"
 
-	"github.com/textileio/textile-go/ssl"
 	"gx/ipfs/QmRK2LxanhK2gZq6k6R7vk5ZoYZk8ULSSTB7FzDsMUX6CB/go-multiaddr-net"
 	ma "gx/ipfs/QmWWQ2Txc2c6tqjsBpzg5Ar652cHPGNsQQp2SejkNmkUMb/go-multiaddr"
 	pstore "gx/ipfs/QmXauCuJzmzapetmC6W4TuDJLL1yFFrVzSHoWv8YdbmnxH/go-libp2p-peerstore"
 	"gx/ipfs/QmZoWKhxUmZ2seW4BzX6fJkNR8hh9PsGModr7q171yq2SS/go-libp2p-peer"
 	libp2p "gx/ipfs/QmaPbCnUMBohSGo3KnxEa2bHqyJVVeEEcwtqJAYxerieBo/go-libp2p-crypto"
 	"gx/ipfs/QmcZfnkapfECQGcLZaf9B79NRg7cRa9EnZh4LSbkCzwNvY/go-cid"
+
+	"github.com/textileio/textile-go/ssl"
 )
 
 // PrintSwarmAddrs prints the addresses of the host
@@ -108,6 +109,12 @@ func serveHTTPGateway(cctx *oldcmds.Context) (<-chan error, error) {
 
 func ServeHTTPGatewayProxy(node *TextileNode) (<-chan error, error) {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		cookie, err := r.Cookie("SessionId")
+		log.Infof("Cookie: %s\n", cookie.Value)
+		//if err != nil || cookie.Value != node.GatewayPassword {
+		//	w.WriteHeader(401)
+		//	return
+		//}
 		b, err := node.GetFile(r.URL.Path, nil)
 		if err != nil {
 			log.Errorf("error decrypting path %s: %s", r.URL.Path, err)
